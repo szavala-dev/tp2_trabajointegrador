@@ -74,7 +74,8 @@ cd biblioteca-online-backend
 3. Configurar Variables de Entorno
 Crea un archivo .env en la raíz del proyecto (puedes usar .env.example como plantilla) y configura tus variables de entorno esenciales:
 Fragmento de código
-# .env
+
+.env
 PORT=3000
 DB_HOST=localhost
 DB_USER=your_mysql_user
@@ -101,7 +102,8 @@ npx sequelize-cli db:seed:all
 7. Iniciar el Servidor
 Bash
 npm start
-# O para desarrollo con recarga automática al detectar cambios:
+
+opc para desarrollo con recarga automática al detectar cambios:
 npm run dev
 El servidor estará escuchando en el puerto configurado en tu archivo .env (por defecto, http://localhost:3000).
 
