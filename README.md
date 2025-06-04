@@ -41,25 +41,24 @@ biblioteca-online-backend/
 ├── package.json        # Definición de dependencias y scripts del proyecto.
 ├── .env.example        # Archivo de ejemplo para las variables de entorno.
 └── .gitignore          # Archivos y carpetas a ignorar por Git.
+
 🛠️ Pasos para Configuración y Ejecución
 Sigue estos pasos para levantar el proyecto en tu entorno local, aplicando las fases de desarrollo aprendidas:
 
 1. Requisitos Previos
 Asegúrate de tener instalados los siguientes componentes:
-
 Node.js (versión 14 o superior recomendada)
 MySQL Server
 npm (incluido con Node.js)
+
 2. Clonar el Repositorio
 Bash
-
 git clone [URL_DEL_REPOSITORIO]
 cd biblioteca-online-backend
+
 3. Configurar Variables de Entorno
 Crea un archivo .env en la raíz del proyecto (puedes usar .env.example como plantilla) y configura tus variables de entorno esenciales:
-
 Fragmento de código
-
 # .env
 PORT=3000
 DB_HOST=localhost
@@ -68,27 +67,24 @@ DB_PASSWORD=your_mysql_password
 DB_NAME=biblioteca_online
 JWT_SECRET=your_super_secret_jwt_key # ¡Cambia esto por una clave fuerte y secreta!
 JWT_EXPIRES_IN=1h
+
 4. Instalar Dependencias
 Bash
-
 npm install
+
 5. Configurar la Base de Datos
 Asegúrate de que tu servidor MySQL esté en funcionamiento. Luego, crea una base de datos con el nombre especificado en tu archivo .env (ej. biblioteca_online).
 
 6. Ejecutar Migraciones de la Base de Datos
 Las migraciones de Sequelize se encargarán de crear las tablas y las relaciones necesarias en tu base de datos:
-
 Bash
-
 npx sequelize-cli db:migrate
 (Opcional) Para poblar la base de datos con datos de prueba iniciales, puedes ejecutar los seeders:
-
 Bash
-
 npx sequelize-cli db:seed:all
+
 7. Iniciar el Servidor
 Bash
-
 npm start
 # O para desarrollo con recarga automática al detectar cambios:
 npm run dev
@@ -115,6 +111,7 @@ POST /api/books/:bookId/reviews: Crear una nueva reseña para un libro.
 GET /api/books/:bookId/reviews: Recuperar todas las reseñas de un libro.
 PUT /api/reviews/:id: Update: Actualizar una reseña propia.
 DELETE /api/reviews/:id: Delete: Eliminar una reseña propia.
+
 📝 Documentación y Buenas Prácticas
 Durante el desarrollo de este trabajo práctico, se ha puesto especial énfasis en:
 
