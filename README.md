@@ -28,18 +28,30 @@ Dotenv: Módulo para cargar variables de entorno.
 🗄️ Estructura del Proyecto
 El proyecto sigue una arquitectura modular y limpia, diseñada para reflejar el patrón MVC y facilitar el mantenimiento y la escalabilidad:
 
-biblioteca-online-backend/
+biblioteca-online-backend
+/
 ├── config/             # Archivos de configuración (DB para Sequelize, JWT)
+
 ├── controllers/        # **Capa del Controlador**: Contiene la lógica de negocio y procesa las peticiones.
+
 ├── models/             # **Capa del Modelo**: Define la estructura de datos (Sequelize Models) y las interacciones con la DB.
+
 ├── middleware/         # Funciones middleware para autenticación, autorización y subida de archivos.
+
 ├── migrations/         # Migraciones de Sequelize para la gestión del esquema de la base de datos.
+
 ├── seeders/            # Seeders de Sequelize para poblar la base de datos con datos iniciales (opcional).
+
 ├── routes/             # **Capa de Rutas**: Define los endpoints de la API y los asocia a los controladores.
+
 ├── storage/            # Carpeta para almacenar físicamente los archivos de libros y portadas subidos.
+
 ├── app.js              # Archivo principal de la aplicación Express y configuración global.
+
 ├── package.json        # Definición de dependencias y scripts del proyecto.
+
 ├── .env.example        # Archivo de ejemplo para las variables de entorno.
+
 └── .gitignore          # Archivos y carpetas a ignorar por Git.
 
 🛠️ Pasos para Configuración y Ejecución
