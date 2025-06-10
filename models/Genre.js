@@ -4,7 +4,7 @@ class Genre extends Model {}
 
 User.init(
   {
-    name: DataTypes.STRING,
+    genreName: DataTypes.STRING,
   },
   {
     sequelize: connection,
