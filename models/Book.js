@@ -1,17 +1,15 @@
 import { DataTypes, Model } from "sequelize";
+import connection from "../config/database.js";
 
 class Book extends Model {}
 
-User.init(
+Book.init(
   {
-    bookName: DataTypes.STRING,
-    uploadDate: DataTypes.DATE,
-    cover: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    genreId: DataTypes.INTEGER,
-    authorId: DataTypes.INTEGER,
+    title: { type: DataTypes.STRING, allowNull: false },
+    author: { type: DataTypes.STRING, allowNull: false },
+    description: { type: DataTypes.TEXT },
+    fileUrl: { type: DataTypes.STRING }, // Ruta del archivo subido
+    coverUrl: { type: DataTypes.STRING }, // Ruta de la portada
   },
   {
     sequelize: connection,

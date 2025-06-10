@@ -1,13 +1,13 @@
 import { DataTypes, Model } from "sequelize";
+import connection from "../config/database.js";
 
 class Review extends Model {}
 
-User.init(
+Review.init(
   {
-    text: DataTypes.STRING,
-    userId: DataTypes.INTEGER,
-    bookId: DataTypes.INTEGER,
-    },
+    rating: { type: DataTypes.INTEGER, allowNull: false },
+    comment: { type: DataTypes.TEXT },
+  },
   {
     sequelize: connection,
     modelName: "Review",

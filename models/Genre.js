@@ -1,10 +1,11 @@
 import { DataTypes, Model } from "sequelize";
+import connection from "../config/database.js";
 
 class Genre extends Model {}
 
-User.init(
+Genre.init(
   {
-    name: DataTypes.STRING,
+    name: { type: DataTypes.STRING, allowNull: false, unique: true },
   },
   {
     sequelize: connection,

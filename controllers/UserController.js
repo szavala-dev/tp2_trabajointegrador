@@ -1,51 +1,20 @@
-import UserService from "../services/UserService.js";
+const { User } = require('../models');
 
-class UserController {
-  userService = new UserService();
+exports.createUser = async (req, res) => {
+  try {
+    const { userName, password } = req.body;
+    const user = await User.create({ userName, password });
+    res.status(201).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-  getAllUserController = async (req, res) => {
-    try {
-      const users = await this.userService.getAllUserService();
-      res.status(200).send({
-        success: true,
-        message: users,
-      });
-    } catch (error) {
-      res.status(400).send({
-        success: false,
-        message: error.message,
-      });
-    }
-  };
-
-  getUserByIdController = (req, res) => {
-    const user = this.userService.getlUserServiceById();
-    res.status(200).send({
-      success: true,
-      message: user,
-    });
-  };
-
-  createUserController = async (req, res) => {
-    try {
-      const { name, mail, pass } = req.body;
-      const user = await this.userService.createUserService({
-        name,
-        mail,
-        pass,
-      });
-      console.log(`🚀 ~ UserController ~ createUserController= ~ user:`, user);
-      res.status(201).send({
-        success: true,
-        message: user,
-      });
-    } catch (error) {
-      res.status(400).send({
-        success: false,
-        message: error.message,
-      });
-    }
-  };
-}
-
-export default UserController;
+exports.getUsers = async (req, res) => {
+  try {
+    const users = await User.findAll();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
