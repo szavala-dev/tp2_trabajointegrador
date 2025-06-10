@@ -5,7 +5,7 @@ class Book extends Model {}
 User.init(
   {
     bookName: DataTypes.STRING,
-    date: DataTypes.DATE,
+    uploadDate: DataTypes.DATE,
     cover: {
       type: DataTypes.STRING,
       allowNull: true,
