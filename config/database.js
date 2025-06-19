@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 
-const sequelize = new Sequelize('mi_libreria', 'root', '', {
+const sequelize = new Sequelize('biblioteca_online', 'root', '', {
   host: 'localhost',
   dialect: 'mysql'
 });

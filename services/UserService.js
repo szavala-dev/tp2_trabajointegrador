@@ -1,4 +1,4 @@
-import { User, Book } from "../models/index.js";
+import { User, Book } from "../models/Index.js";
 
 class UserService {
   getAllUserService = async () => {
