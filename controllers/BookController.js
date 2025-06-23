@@ -43,3 +43,16 @@ export async function getBookById(req, res) {
     res.status(500).json({ error: error.message });
   }
 }
+
+export async function getAllAuthors(req, res) {
+  try {
+    const authors = await Book.findAll({
+      attributes: ['author'],
+      group: ['author'],
+    });
+
+    res.json(authors.map(author => author.author));
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}

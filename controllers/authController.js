@@ -1,6 +1,7 @@
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { ENV_VARIABLES } from '../config/config.js';
 
 export async function register(req, res) {
   try {
@@ -21,7 +22,7 @@ export async function login(req, res) {
     const valid = await bcrypt.compare(pass, user.pass);
     if (!valid) return res.status(400).json({ error: 'Contraseña incorrecta' });
 
-    const token = jwt.sign({ id: user.id, userName: user.userName }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
+    const token = jwt.sign({ id: user.id, userName: user.userName }, ENV_VARIABLES.JWT_SECRET, { expiresIn: ENV_VARIABLES.JWT_EXPIRES_IN });
     res.json({ token });
   } catch (err) {
     res.status(500).json({ error: err.message });
