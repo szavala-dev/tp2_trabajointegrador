@@ -10,16 +10,18 @@ Book.init(
     author: { type: DataTypes.STRING, allowNull: false },
     GenreId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: Genre,
-        key: 'id'
-      }
+      allowNull: false
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   },
   {
     sequelize: connection,
     modelName: "Book",
+    tableName: 'books',
+    freezeTableName: true,
   }
 );
 

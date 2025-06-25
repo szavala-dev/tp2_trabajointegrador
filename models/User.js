@@ -5,6 +5,11 @@ class User extends Model {}
 
 User.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
     userName: { type: DataTypes.STRING, allowNull: false, unique: true },
     mail: { type: DataTypes.STRING, allowNull: false, unique: true },
     pass: { type: DataTypes.STRING, allowNull: false },
@@ -17,6 +22,8 @@ User.init(
   {
     sequelize: connection,
     modelName: "User",
+    tableName: 'users',
+    freezeTableName: true,
   }
 );
 

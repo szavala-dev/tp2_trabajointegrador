@@ -1,0 +1,177 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "tp2_trabajointegrador API",
+  "requests": [
+    {
+      "name": "Register User",
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/register",
+      "body": {
+        "type": "json",
+        "raw": {
+          "userName": "juan",
+          "mail": "juan@email.com",
+          "pass": "123456"
+        }
+      },
+      "tests": []
+    },
+    {
+      "name": "Login User",
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/login",
+      "body": {
+        "type": "json",
+        "raw": {
+          "mail": "juan@email.com",
+          "pass": "123456"
+        }
+      },
+      "tests": []
+    },
+    {
+      "name": "Get User Profile",
+      "method": "GET",
+      "url": "http://localhost:3000/api/users/profile",
+      "auth": {
+        "type": "bearer",
+        "token": "{{jwt_token}}"
+      },
+      "tests": []
+    },
+    {
+      "name": "Update Membership",
+      "method": "PUT",
+      "url": "http://localhost:3000/api/users/membership",
+      "auth": {
+        "type": "bearer",
+        "token": "{{jwt_token}}"
+      },
+      "body": {
+        "type": "json",
+        "raw": {}
+      },
+      "tests": []
+    },
+    {
+      "name": "Update User Role (admin)",
+      "method": "PUT",
+      "url": "http://localhost:3000/api/users/1/role",
+      "auth": {
+        "type": "bearer",
+        "token": "{{jwt_token}}"
+      },
+      "body": {
+        "type": "json",
+        "raw": {
+          "role": "uploader"
+        }
+      },
+      "tests": []
+    },
+    {
+      "name": "Get All Users (admin)",
+      "method": "GET",
+      "url": "http://localhost:3000/api/users/",
+      "auth": {
+        "type": "bearer",
+        "token": "{{jwt_token}}"
+      },
+      "tests": []
+    },
+    {
+      "name": "Upload File (Multer)",
+      "method": "POST",
+      "url": "http://localhost:3000/api/files/upload",
+      "body": {
+        "type": "formdata",
+        "form": [
+          {
+            "key": "file",
+            "type": "file",
+            "src": ""
+          }
+        ]
+      },
+      "tests": []
+    },
+    {
+      "name": "Get All Books",
+      "method": "GET",
+      "url": "http://localhost:3000/api/books",
+      "tests": []
+    },
+    {
+      "name": "Create Book (Uploader/Admin)",
+      "method": "POST",
+      "url": "http://localhost:3000/api/books/upload",
+      "auth": {
+        "type": "bearer",
+        "token": "{{jwt_token}}"
+      },
+      "body": {
+        "type": "json",
+        "raw": {
+          "title": "Nuevo Libro",
+          "author": "Autor Ejemplo",
+          "GenreId": 1
+        }
+      },
+      "tests": []
+    },
+    {
+      "name": "Create Review",
+      "method": "POST",
+      "url": "http://localhost:3000/api/books/1/reviews",
+      "auth": {
+        "type": "bearer",
+        "token": "{{jwt_token}}"
+      },
+      "body": {
+        "type": "json",
+        "raw": {
+          "content": "Muy buen libro!",
+          "rating": 5
+        }
+      },
+      "tests": []
+    },
+    {
+      "name": "Get Book Reviews",
+      "method": "GET",
+      "url": "http://localhost:3000/api/books/1/reviews",
+      "auth": {
+        "type": "bearer",
+        "token": "{{jwt_token}}"
+      },
+      "tests": []
+    },
+    {
+      "name": "Update Review",
+      "method": "PUT",
+      "url": "http://localhost:3000/api/reviews/1",
+      "auth": {
+        "type": "bearer",
+        "token": "{{jwt_token}}"
+      },
+      "body": {
+        "type": "json",
+        "raw": {
+          "content": "Actualización de la reseña",
+          "rating": 4
+        }
+      },
+      "tests": []
+    },
+    {
+      "name": "Delete Review",
+      "method": "DELETE",
+      "url": "http://localhost:3000/api/reviews/1",
+      "auth": {
+        "type": "bearer",
+        "token": "{{jwt_token}}"
+      },
+      "tests": []
+    }
+  ]
+}
