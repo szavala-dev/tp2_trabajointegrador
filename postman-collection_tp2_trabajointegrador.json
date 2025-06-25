@@ -1,0 +1,121 @@
+{
+  "info": {
+    "_postman_id": "tp2-trabajointegrador-collection",
+    "name": "tp2_trabajointegrador API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "postmanCollectionVersion": "2.1.0"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"userName\": \"juan\",\n  \"mail\": \"juan@email.com\",\n  \"pass\": \"123456\"\n}" },
+        "url": { "raw": "http://localhost:3000/api/auth/register", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "register"] }
+      }
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"mail\": \"juan@email.com\",\n  \"pass\": \"123456\"\n}" },
+        "url": { "raw": "http://localhost:3000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "login"] }
+      }
+    },
+    {
+      "name": "Get User Profile",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" } ],
+        "url": { "raw": "http://localhost:3000/api/users/profile", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "users", "profile"] }
+      }
+    },
+    {
+      "name": "Update Membership",
+      "request": {
+        "method": "PUT",
+        "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" }, { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{}" },
+        "url": { "raw": "http://localhost:3000/api/users/membership", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "users", "membership"] }
+      }
+    },
+    {
+      "name": "Update User Role (admin)",
+      "request": {
+        "method": "PUT",
+        "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" }, { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"role\": \"uploader\"\n}" },
+        "url": { "raw": "http://localhost:3000/api/users/1/role", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "users", "1", "role"] }
+      }
+    },
+    {
+      "name": "Get All Users (admin)",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" } ],
+        "url": { "raw": "http://localhost:3000/api/users/", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "users", ""] }
+      }
+    },
+    {
+      "name": "Upload File (Multer)",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "multipart/form-data" } ],
+        "body": { "mode": "formdata", "formdata": [ { "key": "file", "type": "file", "src": "" } ] },
+        "url": { "raw": "http://localhost:3000/api/files/upload", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "files", "upload"] }
+      }
+    },
+    {
+      "name": "Get All Books",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:3000/api/books", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "books"] }
+      }
+    },
+    {
+      "name": "Create Book (Uploader/Admin)",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" }, { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"title\": \"Nuevo Libro\",\n  \"author\": \"Autor Ejemplo\",\n  \"GenreId\": 1\n}" },
+        "url": { "raw": "http://localhost:3000/api/books/upload", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "books", "upload"] }
+      }
+    },
+    {
+      "name": "Create Review",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" }, { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"content\": \"Muy buen libro!\",\n  \"rating\": 5\n}" },
+        "url": { "raw": "http://localhost:3000/api/books/1/reviews", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "books", "1", "reviews"] }
+      }
+    },
+    {
+      "name": "Get Book Reviews",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" } ],
+        "url": { "raw": "http://localhost:3000/api/books/1/reviews", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "books", "1", "reviews"] }
+      }
+    },
+    {
+      "name": "Update Review",
+      "request": {
+        "method": "PUT",
+        "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" }, { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"content\": \"Actualización de la reseña\",\n  \"rating\": 4\n}" },
+        "url": { "raw": "http://localhost:3000/api/reviews/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "reviews", "1"] }
+      }
+    },
+    {
+      "name": "Delete Review",
+      "request": {
+        "method": "DELETE",
+        "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" } ],
+        "url": { "raw": "http://localhost:3000/api/reviews/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "reviews", "1"] }
+      }
+    }
+  ]
+}

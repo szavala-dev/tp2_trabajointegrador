@@ -1,6 +1,14 @@
 # tp2_trabajointegrador
 Biblioteca Online - Trabajo Práctico (Backend)
 
+Grupo 8
+Beloso Pedro
+Christian Benito
+Marcos Castrogiovani
+Genaro Rotstein
+Sebastian Zavala
+
+
 ## Objetivo del Trabajo Práctico
 El objetivo principal de este trabajo práctico es explorar las posibilidades de Node.js, Express y Sequelize, y desarrollar habilidades para crear soluciones más robustas y complejas en términos de arquitectura de software y calidad de código. Esto implica aplicar buenas prácticas de desarrollo como la modularidad, la escalabilidad y la seguridad, así como tener en cuenta aspectos como el rendimiento, la usabilidad y la mantenibilidad del código.
 
