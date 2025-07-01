@@ -27,7 +27,7 @@ app.use('/api/auth', createAuthRoutes({ authController: container.authController
 app.use('/api/users', createUserRoutes({ userController: container.userController }));
 app.use('/api/genres', createGenreRoutes({ genreController: container.genreController }));
 app.use('/api/books', createBookRoutes({ bookController: container.bookController }));
-app.use('/api/books', createReviewRoutes({ reviewController: container.reviewController }));
+app.use('/api', createReviewRoutes({ reviewController: container.reviewController }));
 app.use('/api/files', createFileRoutes({ fileController: container.fileController }));
 
 app.use(errorHandler);

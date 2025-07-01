@@ -32,7 +32,8 @@ export function makeUserController({ User, bcrypt }) {
     },
     async updateRole(req, res) {
       try {
-        const { id, role } = req.body;
+        const id = req.params.id;
+        const { role } = req.body;
         const result = await userService.updateUserRole(id, role);
         res.json(result);
       } catch (err) {

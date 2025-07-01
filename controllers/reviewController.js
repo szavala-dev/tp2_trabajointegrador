@@ -6,7 +6,8 @@ export function makeReviewController({ Review, Book, User }) {
   return {
     async create(req, res) {
       try {
-        const { bookId, rating, comment } = req.body;
+        const { rating, comment } = req.body;
+        const { bookId } = req.params;
         const userId = req.user.id;
         // Validación manual extra (además de express-validator en la ruta)
         if (!bookId || !Number.isInteger(rating) || rating < 1 || rating > 5 || !comment) {
