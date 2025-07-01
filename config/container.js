@@ -5,12 +5,12 @@ import Genre from '../models/Genre.js';
 import Review from '../models/Review.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { makeAuthController } from '../controllers/authController.factory.js';
-import { makeUserController } from '../controllers/userController.factory.js';
-import { makeBookController } from '../controllers/bookController.factory.js';
-import { makeGenreController } from '../controllers/genreController.factory.js';
-import { makeReviewController } from '../controllers/reviewController.factory.js';
-import { makeFileController } from '../controllers/fileController.factory.js';
+import { makeAuthController } from '../controllers/authController.js';
+import { makeUserController } from '../controllers/userController.js';
+import { makeBookController } from '../controllers/bookController.js';
+import { makeGenreController } from '../controllers/genreController.js';
+import { makeReviewController } from '../controllers/reviewController.js';
+import { makeFileController } from '../controllers/fileController.js';
 
 export const container = {
   User,

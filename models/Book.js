@@ -1,6 +1,5 @@
 import { DataTypes, Model } from "sequelize";
 import connection from "../config/database.js";
-import Genre from "./Genre.js";
 
 class Book extends Model {}
 

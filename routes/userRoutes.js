@@ -19,11 +19,10 @@ export default function createUserRoutes({ userController }) {
       }
       next();
     },
-    userController.createUser
+    userController.create
   );
-  router.get('/', authenticateToken, authorizeRole('admin'), userController.getUsers);
-  router.get('/profile', authenticateToken, userController.getProfile);
-  router.put('/membership', authenticateToken, userController.updateMembership);
-  router.put('/:id/role', authenticateToken, authorizeRole('admin'), userController.updateUserRole);
+  router.get('/', authenticateToken, authorizeRole('admin'), userController.getAll);
+  router.get('/profile', authenticateToken, userController.getById);
+  router.put('/:id/role', authenticateToken, authorizeRole('admin'), userController.updateRole);
   return router;
 }

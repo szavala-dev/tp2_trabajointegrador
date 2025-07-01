@@ -21,11 +21,11 @@ export default function createBookRoutes({ bookController }) {
       }
       next();
     },
-    bookController.createBook
+    bookController.create
   );
-  router.put('/:id', authenticateToken, authorizeRole('uploader', 'admin'), bookController.updateBook);
-  router.delete('/:id', authenticateToken, authorizeRole('admin'), bookController.deleteBook);
-  router.get('/', bookController.getBooks);
-  router.get('/:id', bookController.getBookById);
+  router.put('/:id', authenticateToken, authorizeRole('uploader', 'admin'), bookController.update);
+  router.delete('/:id', authenticateToken, authorizeRole('admin'), bookController.delete);
+  router.get('/', bookController.getAll);
+  router.get('/:id', bookController.getById);
   return router;
 }

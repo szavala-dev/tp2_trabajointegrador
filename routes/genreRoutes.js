@@ -17,10 +17,10 @@ export default function createGenreRoutes({ genreController }) {
       }
       next();
     },
-    genreController.createGenre
+    genreController.create
   );
-  router.put('/:id', authenticateToken, authorizeRole('admin'), genreController.updateGenre);
-  router.delete('/:id', authenticateToken, authorizeRole('admin'), genreController.deleteGenre);
-  router.get('/', genreController.getGenres);
+  router.put('/:id', authenticateToken, authorizeRole('admin'), genreController.update);
+  router.delete('/:id', authenticateToken, authorizeRole('admin'), genreController.delete);
+  router.get('/', genreController.getAll);
   return router;
 }

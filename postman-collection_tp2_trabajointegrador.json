@@ -33,15 +33,6 @@
       }
     },
     {
-      "name": "Update Membership",
-      "request": {
-        "method": "PUT",
-        "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" }, { "key": "Content-Type", "value": "application/json" } ],
-        "body": { "mode": "raw", "raw": "{}" },
-        "url": { "raw": "http://localhost:3000/api/users/membership", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "users", "membership"] }
-      }
-    },
-    {
       "name": "Update User Role (admin)",
       "request": {
         "method": "PUT",
@@ -80,7 +71,7 @@
         "method": "POST",
         "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" }, { "key": "Content-Type", "value": "application/json" } ],
         "body": { "mode": "raw", "raw": "{\n  \"title\": \"Nuevo Libro\",\n  \"author\": \"Autor Ejemplo\",\n  \"GenreId\": 1\n}" },
-        "url": { "raw": "http://localhost:3000/api/books/upload", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "books", "upload"] }
+        "url": { "raw": "http://localhost:3000/api/books", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "books"] }
       }
     },
     {
@@ -88,7 +79,7 @@
       "request": {
         "method": "POST",
         "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" }, { "key": "Content-Type", "value": "application/json" } ],
-        "body": { "mode": "raw", "raw": "{\n  \"content\": \"Muy buen libro!\",\n  \"rating\": 5\n}" },
+        "body": { "mode": "raw", "raw": "{\n  \"comment\": \"Muy buen libro!\",\n  \"rating\": 5\n}" },
         "url": { "raw": "http://localhost:3000/api/books/1/reviews", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "books", "1", "reviews"] }
       }
     },
@@ -105,7 +96,7 @@
       "request": {
         "method": "PUT",
         "header": [ { "key": "Authorization", "value": "Bearer {{jwt_token}}" }, { "key": "Content-Type", "value": "application/json" } ],
-        "body": { "mode": "raw", "raw": "{\n  \"content\": \"Actualización de la reseña\",\n  \"rating\": 4\n}" },
+        "body": { "mode": "raw", "raw": "{\n  \"comment\": \"Actualización de la reseña\",\n  \"rating\": 4\n}" },
         "url": { "raw": "http://localhost:3000/api/reviews/1", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "reviews", "1"] }
       }
     },

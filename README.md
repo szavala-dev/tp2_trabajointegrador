@@ -41,9 +41,17 @@ Este backend ha sido construido con un stack moderno, ideal para aprender y apli
 ## Arquitectura y Refactorización
 
 > **¡Importante!**
-> El proyecto fue refactorizado para utilizar **inyección de dependencias (DI)** y factories en controladores y rutas.
+> El proyecto fue refactorizado para utilizar **inyección de dependencias (DI)** y una **capa de servicios** para la lógica de negocio.
 
-La arquitectura desacoplada permite mayor mantenibilidad, testabilidad y escalabilidad. Las dependencias se gestionan desde un contenedor central y se inyectan en los factories de controladores y rutas.
+La arquitectura desacoplada permite mayor mantenibilidad, testabilidad y escalabilidad. Las dependencias se gestionan desde un contenedor central y se inyectan en los controladores y rutas. **Toda la lógica de negocio (registro, login, CRUD de usuarios, libros, géneros, reseñas y archivos) está centralizada en la carpeta `services/`**. Los controladores solo gestionan la request/response y delegan la lógica a los servicios.
+
+### Patrón aplicado
+- `controllers/`: Reciben la request, llaman al service y devuelven la respuesta.
+- `services/`: Contienen la lógica de negocio, validaciones, reglas y operaciones con los modelos.
+- `models/`: Definición de entidades Sequelize.
+- `routes/`: Definición de endpoints y middlewares.
+
+Esto facilita el mantenimiento, la escalabilidad y el testing del backend.
 
 ## Estructura del Proyecto
 El proyecto sigue una arquitectura modular y limpia, diseñada para reflejar el patrón MVC y facilitar el mantenimiento y la escalabilidad:
@@ -51,12 +59,12 @@ El proyecto sigue una arquitectura modular y limpia, diseñada para reflejar el 
 ```
 biblioteca-online-backend/
 ├── config/         # Configuración de base de datos y entorno
-├── controllers/    # Controladores (solo *.factory.js)
+├── controllers/    # Controladores
 ├── models/         # Modelos Sequelize
 ├── middleware/     # Middlewares de autenticación, roles, errores
 ├── migrations/     # Migraciones de Sequelize
 ├── seeders/        # Seeders de Sequelize (opcional)
-├── routes/         # Rutas (solo *.factory.js)
+├── routes/         # Rutas
 ├── storage/        # Archivos subidos
 ├── app.js          # Punto de entrada único: inicializa y arranca el servidor
 ├── package.json    # Dependencias y scripts
@@ -155,21 +163,18 @@ Aquí se detallan las principales rutas de la API, que permiten realizar las ope
 
 ### Usuarios (/api/users) - Requieren Autenticación JWT
 - GET /api/users/profile: Recuperar el perfil del usuario autenticado.
-- PUT /api/users/membership: Simula la actualización del estado de membresía (en un proyecto real, se integraría con una pasarela de pagos).
 
 ### Libros (/api/books) - Algunas rutas requieren autenticación/autorización
 - GET /api/books: Recuperar la lista de todos los libros (con soporte para paginación y filtros).
 - GET /api/books/:id: Recuperar los detalles de un libro específico.
-- POST /api/books/upload: Crear (subir) un nuevo libro (requiere rol uploader o admin).
-- GET /api/books/:id/download: Recuperar (descargar) un libro (requiere membresía activa/prueba).
-- GET /api/books/:id/read: Recuperar (leer) un libro online (requiere membresía activa/prueba).
+- POST /api/books: Crear (subir) un nuevo libro (requiere rol uploader o admin).
 - DELETE /api/books/:id: Eliminar un libro (requiere ser el uploader o un admin).
 
 ### Reseñas (/api/reviews) - Requieren Autenticación JWT
 - POST /api/books/:bookId/reviews: Crear una nueva reseña para un libro.
 - GET /api/books/:bookId/reviews: Recuperar todas las reseñas de un libro.
-- PUT /api/reviews/:id: Actualizar una reseña propia.
-- DELETE /api/reviews/:id: Eliminar una reseña propia.
+- PUT /api/reviews/:reviewId: Actualizar una reseña propia.
+- DELETE /api/reviews/:reviewId: Eliminar una reseña propia.
 
 ## Subida de Archivos (Multer)
 
@@ -239,18 +244,12 @@ Un seeder es un script que inserta datos de prueba en la base de datos. Es útil
    ```bash
    npx sequelize-cli db:migrate
    ```
-2. Ejecuta los seeders:
+2. Ejecuta los seeders (opcional, solo si quieres usar los seeders legacy):
    ```bash
    npx sequelize-cli db:seed:all
    ```
 
-Esto insertará usuarios, géneros y libros de ejemplo. Puedes ver o modificar los datos en el archivo `seeders/20250624-demo-seeder.js`.
-
-### Para limpiar los datos de ejemplo
-Si quieres borrar los datos insertados por los seeders:
-```bash
-npx sequelize-cli db:seed:undo:all
-```
+Esto insertará usuarios, géneros y libros de ejemplo.
 
 > **Nota:** El método recomendado para poblar la base de datos es usando el script moderno:
 >
@@ -271,4 +270,9 @@ npx sequelize-cli db:seed:undo:all
 - Documentación: Este README sirve como documentación principal para la ejecución y uso de la API.
 
 > **Nota:** Si usas variables de entorno (recomendado), asegúrate de tener el archivo `config/config.js` (no `config.json`). Sequelize CLI detecta automáticamente el archivo JS y permite usar variables de entorno para la conexión. Si tienes ambos archivos, el JS tiene prioridad.
+
+---
+
+## Recomendación de documentación interactiva
+> Se recomienda integrar Swagger/OpenAPI para documentación interactiva y pruebas desde el navegador. Puedes usar `swagger-jsdoc` y `swagger-ui-express` para generar y servir la documentación automáticamente.
 

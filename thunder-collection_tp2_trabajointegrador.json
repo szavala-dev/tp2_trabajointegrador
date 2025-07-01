@@ -40,20 +40,6 @@
       "tests": []
     },
     {
-      "name": "Update Membership",
-      "method": "PUT",
-      "url": "http://localhost:3000/api/users/membership",
-      "auth": {
-        "type": "bearer",
-        "token": "{{jwt_token}}"
-      },
-      "body": {
-        "type": "json",
-        "raw": {}
-      },
-      "tests": []
-    },
-    {
       "name": "Update User Role (admin)",
       "method": "PUT",
       "url": "http://localhost:3000/api/users/1/role",
@@ -104,7 +90,7 @@
     {
       "name": "Create Book (Uploader/Admin)",
       "method": "POST",
-      "url": "http://localhost:3000/api/books/upload",
+      "url": "http://localhost:3000/api/books",
       "auth": {
         "type": "bearer",
         "token": "{{jwt_token}}"
@@ -130,7 +116,7 @@
       "body": {
         "type": "json",
         "raw": {
-          "content": "Muy buen libro!",
+          "comment": "Muy buen libro!",
           "rating": 5
         }
       },
@@ -157,7 +143,7 @@
       "body": {
         "type": "json",
         "raw": {
-          "content": "Actualización de la reseña",
+          "comment": "Actualización de la reseña",
           "rating": 4
         }
       },
