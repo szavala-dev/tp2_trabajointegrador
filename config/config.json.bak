@@ -1,0 +1,7 @@
+// Archivo renombrado para evitar conflictos con config.js y variables de entorno.
+// Si necesitas restaurar este archivo, cambia el nombre a config.json nuevamente.
+{
+  "development": {},
+  "test": {},
+  "production": {}
+}

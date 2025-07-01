@@ -226,6 +226,42 @@ Para importar:
 
 ¡Listo para probar tu API!
 
+## Poblar la Base de Datos con Seeders (Datos de Ejemplo)
+
+Puedes cargar datos de ejemplo (usuarios, géneros y libros) usando los seeders de Sequelize incluidos en la carpeta `seeders/`.
+
+### ¿Qué es un seeder?
+Un seeder es un script que inserta datos de prueba en la base de datos. Es útil para desarrollo, testing o para tener datos iniciales en la app.
+
+### Cómo ejecutar los seeders
+
+1. Asegúrate de haber ejecutado las migraciones:
+   ```bash
+   npx sequelize-cli db:migrate
+   ```
+2. Ejecuta los seeders:
+   ```bash
+   npx sequelize-cli db:seed:all
+   ```
+
+Esto insertará usuarios, géneros y libros de ejemplo. Puedes ver o modificar los datos en el archivo `seeders/20250624-demo-seeder.js`.
+
+### Para limpiar los datos de ejemplo
+Si quieres borrar los datos insertados por los seeders:
+```bash
+npx sequelize-cli db:seed:undo:all
+```
+
+> **Nota:** El método recomendado para poblar la base de datos es usando el script moderno:
+>
+> ```bash
+> npm run seed
+> ```
+>
+> Esto ejecuta `seeders/seedDemo.mjs` y carga los datos de ejemplo usando `Model.bulkCreate` de Sequelize. Los seeders legacy de Sequelize CLI han sido deshabilitados para evitar confusión.
+
+---
+
 ## Buenas Prácticas y Documentación
 - Modularidad: Código organizado en módulos lógicos (modelos, controladores, rutas, middlewares).
 - Escalabilidad: Diseño que permite añadir nuevas funcionalidades o manejar un mayor volumen de usuarios y datos.
@@ -233,4 +269,6 @@ Para importar:
 - Manejo de Errores: Captura y respuesta adecuada a errores inesperados y validaciones.
 - Legibilidad del Código: Nombres de variables y funciones claros, y comentarios cuando son necesarios.
 - Documentación: Este README sirve como documentación principal para la ejecución y uso de la API.
+
+> **Nota:** Si usas variables de entorno (recomendado), asegúrate de tener el archivo `config/config.js` (no `config.json`). Sequelize CLI detecta automáticamente el archivo JS y permite usar variables de entorno para la conexión. Si tienes ambos archivos, el JS tiene prioridad.
 
