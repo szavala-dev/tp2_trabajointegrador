@@ -13,7 +13,7 @@ Sebastian Zavala
 El objetivo principal de este trabajo práctico es explorar las posibilidades de Node.js, Express y Sequelize, y desarrollar habilidades para crear soluciones más robustas y complejas en términos de arquitectura de software y calidad de código. Esto implica aplicar buenas prácticas de desarrollo como la modularidad, la escalabilidad y la seguridad, así como tener en cuenta aspectos como el rendimiento, la usabilidad y la mantenibilidad del código.
 
 ## Especificaciones del Proyecto
-Este backend implementa una API RESTful para una biblioteca online, permitiendo a los usuarios subir, gestionar, calificar y comentar libros, mientras que otros usuarios registrados pueden leerlos o descargarlos bajo un modelo de membresía de pago a desarrollar en un futuro.
+Este backend implementa una API RESTful para una biblioteca online, permitiendo a los usuarios subir, gestionar, calificar y comentar libros, mientras que otros usuarios registrados pueden leerlos o descargarlos (bajo un modelo de membresía de pago a desarrollar en un futuro).
 
 El proyecto cumple con las siguientes especificaciones técnicas e implementar las siguientes funcionalidades:
 
@@ -27,16 +27,16 @@ El proyecto cumple con las siguientes especificaciones técnicas e implementar l
 Este backend ha sido construido con un stack moderno, ideal para aprender y aplicar conceptos de desarrollo web:
 
 - **Node.js:** Entorno de ejecución de JavaScript.
-- **Express:** Framework web minimalista y flexible para Node.js.
-- **Sequelize:** ORM para Node.js que facilita la interacción con bases de datos relacionales.
-- **MySQL:** Sistema de gestión de bases de datos relacional.
-- **Bcrypt.js:** Librería para el hashing seguro de contraseñas.
-- **JSON Web Tokens (JWT):** Estándar para la autenticación y autorización segura.
-- **Multer:** Middleware para el manejo de subidas de archivos (libros y portadas).
-- **Dotenv:** Módulo para cargar variables de entorno.
-- **cookie-parser:** Middleware para el manejo de cookies HTTP.
-- **nodemon:** Herramienta para recarga automática del servidor en desarrollo.
-- **express-validator:** Middleware para validaciones de datos en las rutas (instalar con `npm install express-validator`).
+- **Express:** Framework web minimalista y flexible para Node.js.(Instalar con npm install express)
+- **Sequelize:** ORM para Node.js que facilita la interacción con bases de datos relacionales. (Instalar con npm install sequelize)
+- **MySQL:** Sistema de gestión de bases de datos relacional. (Instalar con npm install mysql2)
+- **Bcrypt.js:** Librería para el hashing seguro de contraseñas.(Instalar con npm install bcryptjs)
+- **JSON Web Tokens (JWT):** Estándar para la autenticación y autorización segura. (Instalar con npm install jsonwebtoken)
+- **Multer:** Middleware para el manejo de subidas de archivos (libros y portadas).(Instalar con npm install multer)
+- **Dotenv:** Módulo para cargar variables de entorno.(Instalar con npm install dotenv)
+- **cookie-parser:** Middleware para el manejo de cookies HTTP. (Instalar con npm install cookie-parser)
+- **nodemon:** Herramienta para recarga automática del servidor en desarrollo.(Instalar con npm install --save-dev nodemon)
+- **express-validator:** Middleware para validaciones de datos en las rutas (instalar con npm install express-validator).
 
 ## Arquitectura y Refactorización
 
@@ -63,7 +63,7 @@ biblioteca-online-backend/
 ├── models/         # Modelos Sequelize
 ├── middleware/     # Middlewares de autenticación, roles, errores
 ├── migrations/     # Migraciones de Sequelize
-├── seeders/        # Seeders de Sequelize (opcional)
+├── seeders/        # Seeders de Sequelize 
 ├── routes/         # Rutas
 ├── storage/        # Archivos subidos
 ├── app.js          # Punto de entrada único: inicializa y arranca el servidor
@@ -128,14 +128,14 @@ npm install express-validator
    DB_PASSWORD=your_mysql_password
    DB_NAME=biblioteca_online
    JWT_SECRET=your_super_secret_jwt_key # ¡Cambia esto por una clave fuerte y secreta!
-   JWT_EXPIRES_IN=1h
+   JWT_EXPIRES_IN=10h
    ```
 
 4. **Instalar Dependencias**
    npm install
 
 5. **Configurar la Base de Datos**
-   Asegúrate de que tu servidor MySQL esté en funcionamiento. Luego, crea una base de datos con el nombre especificado en tu archivo .env (ej. mi_libreria).
+   Asegúrate de que tu servidor MySQL esté en funcionamiento. Luego, crea una base de datos con el nombre especificado en tu archivo .env (ej. biblioteca_online).
 
 6. **Ejecutar Migraciones de la Base de Datos**
    Las migraciones de Sequelize se encargarán de crear las tablas y las relaciones necesarias en tu base de datos:
@@ -216,7 +216,6 @@ Esta colección incluye ejemplos de:
 - Subida de archivos con Multer
 - Obtener todos los libros
 - Crear libro (requiere JWT y rol uploader/admin)
-- Actualizar membresía de usuario
 - Actualizar rol de usuario (admin)
 - Obtener todos los usuarios (admin)
 - Crear reseña de libro
